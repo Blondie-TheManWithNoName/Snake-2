@@ -3,10 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake2</title>
+    <title>SNAKE II</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+    <svg viewBox="70 70 260 260" id="logo">
+        <circle cx="75%" cy="75%" r="30" stroke-width="0" fill="#009432"/>
+        <path d=" M 264 277 A 100 100 50 0 1 123 136" fill="none" stroke="#2B59C3" stroke-width="50" stroke-linecap="round"/>
+        <path d=" M 136 123 A 100 100 230 0 1 277 264" fill="none" stroke="#e84118" stroke-width="50" stroke-linecap="round"/>
+
+    </svg>
+
+    <!-- <svg id="logo">
+        <path d="M10 50 A40 40 0 0 1 90 50" fill="none" stroke="#2B59C3" stroke-width="17.5"></path>
+        <path d="M10 50 A40 40 0 0 1 90 50" fill="none" stroke="#e84118" stroke-width="17.5"></path>
+    </svg> -->
+    <div class="bar">
+        <div id="score">0</div>
+    </div>
     <canvas id="canvas"></canvas>
 
     <script src="script.js"></script>
