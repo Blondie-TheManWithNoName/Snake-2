@@ -140,9 +140,10 @@ class Snake {
         element[i].style.scale = 0.75;
         setTimeout(() => {
           element[i].style.scale = 1;
-        }, 250);
+        }, 150);
       }
-      apples.pop();
+
+      deleteApple();
       this.addTail(10);
 
       return true;
@@ -213,7 +214,7 @@ var posY = size * 0.5;
 
 var snake = new Snake(
   length,
-  { x: posX - 10, y: posY - 10 },
+  { x: posX - 18, y: posY + 30 },
   { x: posX, y: posY },
   "#E84118"
 );
@@ -243,7 +244,6 @@ var mouseDown = false;
 var rightDown = false;
 
 c.onmousedown = function (e) {
-  //   console.log("mousedown");
   if (e.button === 0) mouseDown = true;
   else if (e.button === 2) rightDown = true;
 };
@@ -251,7 +251,6 @@ c.onmousedown = function (e) {
 c.onmouseup = function (e) {
   if (e.button === 0) mouseDown = false;
   else if (e.button === 2) rightDown = false;
-  //   console.log("mouseup");
 };
 
 c.onmousemove = function (e) {
@@ -307,14 +306,12 @@ var space = false;
 document.body.onkeydown = function (e) {
   if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
     if (!space) space = true;
-    //   debugger;
   }
 };
 
 document.body.onkeyup = function (e) {
   if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
     if (space) space = false;
-    //   debugger;
   }
 };
 
@@ -330,9 +327,6 @@ function draw() {
   if (apples.length > 0) {
     if (snakeBlue.eat()) snake.addTail(5);
   }
-  // ++timer;
-  // posX += addX;
-  // posY += addY;
 
   if (
     xOut(snake.snake[0].pos.x) ||
@@ -348,8 +342,6 @@ function draw() {
   } else {
     setTimeout(function () {
       requestAnimationFrame(draw);
-      // rotation();
-      // console.log("if", targetAngleRadians);
       snake.calculateMovement();
       snakeBlue.calculateMovement();
     }, 1000 / fps);
@@ -385,6 +377,8 @@ function biteOther(snake1, snake2) {
 }
 
 var apples = [];
+var sizeApple = 1.5;
+var growing = false;
 function generateApple() {
   if (apples.length <= 0) {
     let min = 50;
@@ -395,7 +389,36 @@ function generateApple() {
     });
   }
   ctx.beginPath();
-  ctx.arc(apples[0].x, apples[0].y, radius * 1.5, 0, Math.PI * 2);
+  ctx.arc(apples[0].x, apples[0].y, radius * sizeApple, 0, Math.PI * 2);
   ctx.fillStyle = "#009432";
   ctx.fill();
+  if (sizeApple > 1.25 && !growing) {
+    sizeApple -= 0.01;
+    if (sizeApple < 1.25) growing = true;
+  } else {
+    sizeApple += 0.01;
+    if (sizeApple > 1.5) growing = false;
+  }
 }
+
+function deleteApple() {
+  apples.pop();
+}
+
+// Get the circle element and the SVG container
+// const circle = document.getElementById("follow-circle");
+// const svgContainer = document.getElementById("svg-container");
+
+// // Update circle position on mousemove
+// document.body.addEventListener("mousemove", (e) => {
+//   const mouseX = e.clientX;
+//   const mouseY = e.clientY;
+
+//   // Set the circle's center to the mouse coordinates
+//   circle.setAttribute("cx", mouseX);
+//   circle.setAttribute("cy", mouseY + 10);
+// });
+
+// svgContainer.addEventListener("contextmenu", (e) => {
+//   e.preventDefault();
+// });
