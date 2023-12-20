@@ -55,6 +55,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 4.5em;
+  margin-top: 0.75em;
 }
 h1 {
   font-family: "Nunito", sans-serif;
