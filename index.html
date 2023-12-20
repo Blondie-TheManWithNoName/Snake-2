@@ -5,25 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SNAKE II</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" href="favicon.png" >
 </head>
 <body>
-    <svg viewBox="70 70 260 260" id="logo">
-        <circle cx="75%" cy="75%" r="30" stroke-width="0" fill="#009432"/>
-        <path d=" M 264 277 A 100 100 50 0 1 123 136" fill="none" stroke="#2B59C3" stroke-width="50" stroke-linecap="round"/>
-        <path d=" M 136 123 A 100 100 230 0 1 277 264" fill="none" stroke="#e84118" stroke-width="50" stroke-linecap="round"/>
+    <div class="title">
 
-    </svg>
-
-    <!-- <svg id="logo">
-        <path d="M10 50 A40 40 0 0 1 90 50" fill="none" stroke="#2B59C3" stroke-width="17.5"></path>
-        <path d="M10 50 A40 40 0 0 1 90 50" fill="none" stroke="#e84118" stroke-width="17.5"></path>
-    </svg> -->
-    <div class="bar">
-        <div id="score">0</div>
+        <div><h1><span style="color: #009432">S</span>NAKE <span style="color: #E84118">I</span><span style="color: #2B59C3">I</span></h1></div>
+        <svg viewBox="0 0 400 400" id="logo">
+            <circle cx="50%" cy="50%" r="30" stroke-width="0" fill="#009432" />
+            <path d="M 213 119 A 82 82 280 0 1 213 281" fill="none" stroke="#2B59C3" stroke-width="25" stroke-linecap="round"/>
+            <path d="M 187 281 A 82 82 100 0 1 187 119" fill="none" stroke="#e84118" stroke-width="25" stroke-linecap="round"/>
+        </svg>
+    </div>
+    <div id="bar">
+        <div class="score"></div>
     </div>
     <canvas id="canvas"></canvas>
-
+        
     <script src="script.js"></script>
 </body>
 
 </html>
+
+
